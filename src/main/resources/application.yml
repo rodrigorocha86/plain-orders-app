@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+      hibernate.proc.param_null_passing: true
+
+  h2:
+    console:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread - %X{trackerId}] %-5level %logger{36} - %msg%n"
+  level:
+    ROOT: INFO
+    #org.springframework.transaction.interceptor: TRACE
+    #com.zaxxer.hikari: TRACE
+    #com.zaxxer.hikari.HikariConfig: DEBUG
