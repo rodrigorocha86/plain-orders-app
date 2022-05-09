@@ -1,4 +1,4 @@
-package it.rocha.plain.orders.app.persistence.model;
+package it.rocha.plain.orders.app.database.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;

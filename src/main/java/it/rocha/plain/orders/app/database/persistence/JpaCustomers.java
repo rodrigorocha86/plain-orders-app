@@ -1,9 +1,10 @@
-package it.rocha.plain.orders.app.persistence.repository;
+package it.rocha.plain.orders.app.database.persistence;
 
-import it.rocha.plain.orders.app.persistence.model.CustomerRecord;
-import it.rocha.plain.orders.domain.entity.Cpf;
-import it.rocha.plain.orders.domain.entity.Customer;
-import it.rocha.plain.orders.domain.repository.Customers;
+import it.rocha.plain.orders.app.database.model.CustomerRecord;
+
+import it.rocha.plain.orders.domain.customer.Cpf;
+import it.rocha.plain.orders.domain.customer.Customer;
+import it.rocha.plain.orders.repository.Customers;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -14,10 +15,10 @@ import java.util.stream.StreamSupport;
 public class JpaCustomers
         implements Customers {
 
-    private JpaCustomerRecords jpaCustomerRecords;
+    private CustomerRecordDao customerRecordDao;
 
-    public JpaCustomers(JpaCustomerRecords jpaCustomerRecords) {
-        this.jpaCustomerRecords = jpaCustomerRecords;
+    public JpaCustomers(CustomerRecordDao customerRecordDao) {
+        this.customerRecordDao = customerRecordDao;
     }
 
     @Override
@@ -29,13 +30,13 @@ public class JpaCustomers
                         customer.getBirthdate()
                 );
 
-        jpaCustomerRecords.save(customerRecord);
+        customerRecordDao.save(customerRecord);
     }
 
     @Override
     public Set<Customer> all() {
         var stream = StreamSupport.stream(
-                jpaCustomerRecords.findAll().spliterator(), false);
+                customerRecordDao.findAll().spliterator(), false);
 
         return stream.map(
                 customerRecord ->

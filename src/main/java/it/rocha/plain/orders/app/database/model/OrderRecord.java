@@ -1,6 +1,6 @@
-package it.rocha.plain.orders.app.persistence.model;
+package it.rocha.plain.orders.app.database.model;
 
-import it.rocha.plain.orders.domain.entity.Customer;
+import it.rocha.plain.orders.domain.customer.Customer;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,7 +20,5 @@ public class OrderRecord {
 
     @Column(nullable = false)
     private BigDecimal total;
-
-
 
 }
