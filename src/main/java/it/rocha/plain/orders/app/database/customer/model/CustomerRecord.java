@@ -1,4 +1,4 @@
-package it.rocha.plain.orders.app.database.model;
+package it.rocha.plain.orders.app.database.customer.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -7,8 +7,7 @@ import java.time.LocalDate;
 public class CustomerRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private String code;
 
     @Column(nullable = false, unique = true)
     private String cpf;
@@ -21,30 +20,30 @@ public class CustomerRecord {
 
     public CustomerRecord() {}
 
-    public CustomerRecord(String cpf, String name, LocalDate birthdate) {
+    public CustomerRecord(
+            String code, String cpf,
+            String name, LocalDate birthdate) {
         this();
         this.cpf = cpf;
         this.name = name;
         this.birthdate = birthdate;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public String getCode() { return code; }
 
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) { this.name = name; }
+
     public LocalDate getBirthdate() {
         return birthdate;
     }
+
+    public void setBirthdate(LocalDate birthdate) { this.birthdate = birthdate; }
 }

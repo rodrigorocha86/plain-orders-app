@@ -12,11 +12,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 				"it.rocha.plain.orders.app",
 		})
 @EnableTransactionManagement
-@EntityScan("it.rocha.plain.orders.app.persistence.model")
-public class PlainOrdersAppApplication {
+@EntityScan("it.rocha.plain.orders.app.database")
+public class PlainOrdersApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlainOrdersAppApplication.class, args);
+		SpringApplication.run(PlainOrdersApplication.class, args);
 	}
-
 }
